@@ -1,0 +1,20 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>{{title}}</title>
+      <description>{{description}}</description>          
+      <link>{{link}}</link>
+      {% if rss_url %}
+      <atom:link href="{{rss_url}}" rel="self" type="application/rss+xml" />
+      {% endif %}
+
+      {% for item in items %}
+      <item>
+        {% if item.title %}<title>{{item.title}}</title>{% endif %}
+        {% if item.description %}<description>{{item.description}}</description>{% endif %}
+        {% if item.link %}<link>{{item.link}}</link>{% endif %}
+        {% if item.author %}<author>{{item.author}}</author>{% endif %}
+        {% if item.published %}<pubDate>{{item.published}}</pubDate>{% endif %}
+      </item>
+      {% endfor %}
+    </channel>
+</rss>
